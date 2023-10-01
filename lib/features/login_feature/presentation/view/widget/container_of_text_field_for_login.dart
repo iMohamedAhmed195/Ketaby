@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ketab/core/services/service_locator.dart';
@@ -36,8 +37,7 @@ class ContainerOfTextField extends StatelessWidget {
                     CustomTextFormField(
                       hintText: 'Email',
                       function: (value){
-                        if(value!.isEmpty){
-                          print(sl<LoginCubit>().failureLoginModel!.errors!.email![0]);
+                        if(value!.isEmpty ){
                           return sl<LoginCubit>().failureLoginModel!.errors!.email![0] ;
                         }
                         return null ;
@@ -50,8 +50,7 @@ class ContainerOfTextField extends StatelessWidget {
                     CustomTextFormField(
                       hintText: 'Password',
                       function: (value){
-                        if(value!.isEmpty){
-                          print(sl<LoginCubit>().failureLoginModel!.errors!.password![0]);
+                        if(value!.isEmpty ){
                           return sl<LoginCubit>().failureLoginModel!.errors!.password![0] ;
                         }
                         return null ;
@@ -62,10 +61,13 @@ class ContainerOfTextField extends StatelessWidget {
                       inputType: TextInputType.visiblePassword,
                       iconSuffix: Icons.remove_red_eye,
                     ),
-                    CustomButton(buttonName: 'Login', function: () {
-                      sl<LoginCubit>().loginUser();
-                      // sl<LoginCubit>().formKey.currentState!.validate();
-                    },)
+                CustomButton(buttonName: 'Login', function: () {
+                  sl<LoginCubit>().loginUser();
+                  if( sl<LoginCubit>().formKey.currentState!.validate()) {
+
+                  }
+                },)
+                   
                   ],
                 ),
               ),

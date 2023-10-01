@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:ketab/features/login_feature/data/login_model/failure_login_model.dart';
+import 'package:ketab/features/register_feature/data/register_model/failure_register_model.dart';
 
-abstract class Failure{
+abstract class Failure {
   final String errorMessage ;
 
 
@@ -10,7 +11,10 @@ abstract class Failure{
 
 class ServerFailure extends Failure{
    FailureLoginModel? failureLoginModel;
-  ServerFailure(super.errorMessage, [this.failureLoginModel]);
+   FailureRegisterModel? failureRegisterModel;
+
+  ServerFailure(
+      super.errorMessage, {this.failureLoginModel, this.failureRegisterModel});
 
   factory ServerFailure.fromDioException(DioException dioException){
     switch(dioException.type){
@@ -21,7 +25,7 @@ class ServerFailure extends Failure{
       case DioExceptionType.receiveTimeout:
         return ServerFailure('receive time out');
       case DioExceptionType.badResponse:
-        return ServerFailure.fromResponse(dioException.response!.statusCode,dioException.response!.data  );
+        return ServerFailure.fromResponse(dioException.response!.statusCode,dioException.response!.data , '' );
       case DioExceptionType.cancel:
       return ServerFailure('cancel time out');
       case DioExceptionType.connectionError:
@@ -38,10 +42,15 @@ class ServerFailure extends Failure{
 
   }
 
-  factory ServerFailure.fromResponse(int? statusCode , Map<String ,dynamic> response){
+  factory ServerFailure.fromResponse(int? statusCode , Map<String , dynamic> response ,String type){
     //hena 7ot el error 3la 7sb el etfak m3 bta3 el back end hyrg3 ehh
     if(statusCode ==  422){
-     return ServerFailure(FailureLoginModel.fromJson(response).message!,FailureLoginModel.fromJson(response));
+      if(type == 'login') {
+        return ServerFailure(FailureLoginModel.fromJson(response).message!,failureLoginModel: FailureLoginModel.fromJson(response));
+      }else if( type == 'register'){
+        return ServerFailure(FailureRegisterModel.fromJson(response).message!,failureRegisterModel: FailureRegisterModel.fromJson(response));
+      }
+      return ServerFailure('');
     }else if(statusCode == 404){
       return ServerFailure('your request not found , please try again later');
     }else if(statusCode == 500){

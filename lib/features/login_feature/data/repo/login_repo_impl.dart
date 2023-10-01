@@ -14,16 +14,19 @@ class LoginRepoImplementation extends LoginRepo {
   @override
   Future<Either<ServerFailure, LoginModel>> loginUser(
       String email, String password) async {
-    var result = await sl<DioHelper>().postData(url: ApiConstants.logIn, data: {
-      'email': email,
-      'password': password,
-    });
+
     try {
+      var result = await sl<DioHelper>().postData(url: ApiConstants.logIn, data: {
+        'email': email,
+        'password': password,
+      });
+
       loginModel = LoginModel.fromJson(result.data);
       return right(loginModel!);
     } catch (error) {
       if (error is DioException) {
-        return left(ServerFailure.fromResponse(result.statusCode, result.data));
+        failureLoginModel = FailureLoginModel.fromJson(error.response!.data!);
+        return left(ServerFailure.fromResponse(error.response!.statusCode, error.response!.data! ,'login'));
       }
       return left(ServerFailure(error.toString()));
     }

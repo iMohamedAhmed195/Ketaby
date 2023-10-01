@@ -4,6 +4,9 @@ import 'package:ketab/core/network/dio_helper.dart';
 import 'package:ketab/features/login_feature/data/repo/login_repo.dart';
 import 'package:ketab/features/login_feature/data/repo/login_repo_impl.dart';
 import 'package:ketab/features/login_feature/presentation/view_model/login_cubit.dart';
+import 'package:ketab/features/register_feature/data/repos/register_repo.dart';
+import 'package:ketab/features/register_feature/data/repos/register_repo_impl.dart';
+import 'package:ketab/features/register_feature/presentation/view_model/register_cubit.dart';
 
 final sl = GetIt.instance ;
 
@@ -14,6 +17,8 @@ class ServiceLocator {
     sl.registerLazySingleton(() => Dio());
     sl.registerLazySingleton<LoginRepo>(() => LoginRepoImplementation());
     sl.registerLazySingleton(() => LoginCubit(sl()));
+    sl.registerLazySingleton<RegisterRepo>(() => RegisterRepoImpl());
+    sl.registerLazySingleton(() => RegisterCubit(sl()));
 
 
 

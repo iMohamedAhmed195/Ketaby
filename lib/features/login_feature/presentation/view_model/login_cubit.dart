@@ -16,7 +16,6 @@ class LoginCubit extends Cubit<LoginState> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
   var formKey = GlobalKey<FormState>();
 
   Future<void>  loginUser() async{
@@ -25,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
     var result = await loginRepo.loginUser(emailController.text, passwordController.text);
 
     result.fold((failure) {
-      failureLoginModel = failure.failureLoginModel ;
+      failureLoginModel =  failure.failureLoginModel ;
       emit(LoginError(failure.errorMessage ,failure.failureLoginModel));
     }, (loginModel) {
       emit(LoginSuccess(loginModel));
