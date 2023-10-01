@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ketab/core/constants/assets.dart';
-import 'package:ketab/core/constants/colors.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ketab/core/services/app_reouter.dart';
+import 'package:ketab/core/utils/constants/assets.dart';
+import 'package:ketab/core/utils/constants/colors.dart';
 import 'package:onboarding/onboarding.dart';
 
 
@@ -29,9 +31,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       child: InkWell(
         borderRadius: defaultProceedButtonBorderRadius,
         onTap: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context){
-          //   return const LoginScreen();
-          // }));
+          GoRouter.of(context).push(AppRouter.kLogin);
         },
         child: const Padding(
           padding: defaultProceedButtonPadding,

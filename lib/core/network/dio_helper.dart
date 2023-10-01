@@ -1,15 +1,18 @@
 
 import 'package:dio/dio.dart';
-import 'package:ketab/core/services/logging_interceptor.dart';
+import 'package:ketab/core/network/api_constants.dart';
+import 'package:ketab/core/network/logging_interceptor.dart';
 
 
 class DioHelper {
-  static late Dio dio;
+    Dio dio;
 
-  static void init() {
+    DioHelper(this.dio);
+
+  void init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://tasksapp.integration25.com/api',
+        baseUrl: ApiConstants.baseUrl,
         receiveDataWhenStatusError: true,
       ),
     );
@@ -19,56 +22,51 @@ class DioHelper {
     dio.interceptors.add(loggingInterceptor);
   }
 
-  static Future<Response> getData({
+   Future<Response> getData({
     required String url,
     Map<String, dynamic>? query,
-    String lang = 'en',
     String? token,
   }) async {
     dio.options.headers = {
-      'lang': lang,
-      'Content-Type': 'application/json',
+      'Accept': 'application/json',
       'Authorization': 'Bearer $token'
     };
     return await dio.get(url, queryParameters: query);
   }
 
-  static Future<Response> postData({
+   Future<Response> postData({
     required String url,
      Object? data,
     Map<String, dynamic>? query,
-    String lang = 'en',
     String? token,
   }) async {
     dio.options.headers = {
-      'Content-Type': 'application/json',
-      'lang': lang,
+
       'Authorization': 'Bearer $token'
     };
     return await dio.post(url, queryParameters: query, data: data);
   }
 
-  static Future<Response> putData({
+   Future<Response> putData({
     required String url,
     required Map<String, dynamic> data,
     Map<String, dynamic>? query,
-    String lang = 'en',
     String? token,
   }) async {
     dio.options.headers = {
-      'Content-Type': 'application/json',
-      'lang': lang,
+      'Accept': 'application/json',
+
       'Authorization': 'Bearer $token'
     };
     return await dio.put(url, queryParameters: query, data: data);
   }
   
-  static Future<Response> deleteData({
+   Future<Response> deleteData({
     required String url,
     String? token,
   }) async {
     dio.options.headers = {
-      'Content-Type': 'application/json',
+      'Accept': 'application/json',
       'Authorization': 'Bearer $token'
     };
     return await dio.delete(url, );

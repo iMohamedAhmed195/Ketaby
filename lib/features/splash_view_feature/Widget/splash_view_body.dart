@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ketab/core/constants/assets.dart';
 import 'package:ketab/core/services/app_reouter.dart';
+import 'package:ketab/core/utils/constants/assets.dart';
 import 'package:ketab/features/splash_view_feature/Widget/sliding_text.dart';
 
 
@@ -41,7 +41,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void initNavigateToHomeView(){
     Future.delayed(const Duration(seconds: 2),(){
-       GoRouter.of(context).push(AppRouter.kOnboarding);
+       GoRouter.of(context).push(AppRouter.kOnBoarding);
     });
   }
 
