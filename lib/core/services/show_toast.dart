@@ -15,18 +15,18 @@ void showToast({
         textColor: Colors.white,
         fontSize: 16.0);
 
-enum ToastState { SUCCESS, ERORR, WORNING }
+enum ToastState { success, error, warning }
 
 Color choseToasterColor(ToastState state) {
   Color color;
   switch (state) {
-    case ToastState.SUCCESS:
+    case ToastState.success:
       color = const Color(0xff4377ec);
       break;
-    case ToastState.ERORR:
+    case ToastState.error:
       color = Colors.red;
       break;
-    case ToastState.WORNING:
+    case ToastState.warning:
       color = Colors.amber;
       break;
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ketab/core/utils/constants/assets.dart';
+
 
 class CarouselImageHome extends StatelessWidget {
-  const CarouselImageHome({super.key});
+  const CarouselImageHome({super.key, required this.image, required this.index});
 
+  final List<String> image ;
+  final int index ;
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
@@ -20,11 +22,14 @@ class CarouselImageHome extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.w)
               ),
-              child: Image.asset(AssetsData.profile,fit: BoxFit.cover,),
+              child: Image(
+                image: NetworkImage(image[index]),
+                fit: BoxFit.cover,
+              )
             ),
           );
         },
-        itemCount: 5,
+        itemCount: index,
       ),
     );
   }

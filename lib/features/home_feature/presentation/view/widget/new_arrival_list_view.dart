@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ketab/core/utils/constants/colors.dart';
 
-class BestSellerListView extends StatelessWidget {
-  const BestSellerListView({super.key, required this.imageBook, required this.nameBook, required this.categoryBook, required this.priceBeforeBook, required this.priceAfterBook, required this.discountBook, required this.length});
+class NewArrivalListView extends StatelessWidget {
+  const NewArrivalListView({super.key, required this.imageBook, required this.nameBook, required this.categoryBook, required this.priceBeforeBook, required this.priceAfterBook, required this.discountBook, required this.length});
 
   final List<String> imageBook ;
   final List<String> nameBook ;
@@ -17,11 +17,11 @@ class BestSellerListView extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding:  EdgeInsets.only(top: 20.0.h , left: 20.0.w ,right: 20.0.w),
+          padding:  EdgeInsets.only( left: 20.0.w ,right: 20.0.w),
           child: Row(
             children: [
               Text(
-                'Best Seller',
+                'New Arrival',
                 style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w700
@@ -55,10 +55,9 @@ class BestSellerListView extends StatelessWidget {
                                 ]
                             ),
                             child: Image(
-                              image:  NetworkImage(imageBook[index]),
-                                fit: BoxFit.cover,
-                              height: MediaQuery.sizeOf(context).height * 0.22,
-                            )
+                              image: NetworkImage(imageBook[index]),
+                              fit: BoxFit.cover,height: MediaQuery.sizeOf(context).height * 0.22,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -102,7 +101,7 @@ class BestSellerListView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20).r,
                       child: Text(
-                       categoryBook[index],
+                        categoryBook[index],
                         style: TextStyle(
                           fontSize: 14.sp,
                           color: Colors.grey,
@@ -132,7 +131,7 @@ class BestSellerListView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20).r,
                       child: Text(
-                        '${priceAfterBook[index]} L.E',
+                        "${priceAfterBook[index]} L.E",
                         style: TextStyle(
                           fontSize: 14.sp,
                           color: Styles.kPrimaryColor,

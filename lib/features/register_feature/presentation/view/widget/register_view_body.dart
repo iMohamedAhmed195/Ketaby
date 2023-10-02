@@ -44,7 +44,7 @@ class RegisterViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-              ContainerOfTextFieldForRegister()
+              const ContainerOfTextFieldForRegister()
             ],
           )
       ),

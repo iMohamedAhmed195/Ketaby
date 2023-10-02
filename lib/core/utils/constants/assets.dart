@@ -5,4 +5,5 @@ class AssetsData{
   static const onBoarding2 = "assets/images/onBoarding2.png";
   static const onBoarding3 = "assets/images/onBoarding3.png";
   static const profile = "assets/images/profile.jpg";
+  static const category = "assets/images/category.png";
 }

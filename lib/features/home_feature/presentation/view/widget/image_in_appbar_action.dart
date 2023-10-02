@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ketab/core/utils/constants/assets.dart';
 
 class ImageAppBarAction extends StatelessWidget {
-  const ImageAppBarAction({super.key});
-
+  const ImageAppBarAction({super.key, required this.image,});
+  final String image;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -16,11 +15,13 @@ class ImageAppBarAction extends StatelessWidget {
             color: Colors.black,
             borderRadius: BorderRadius.circular(250.w)
         ),
-        child: Image.asset(AssetsData.profile,fit: BoxFit.cover,
+        child: Image(
+          image: NetworkImage(image),
+          fit: BoxFit.cover,
+        ),
         ),
 
 
-      ),
-    );
+      );
   }
 }

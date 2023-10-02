@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ketab/core/services/service_locator.dart';
+import 'package:ketab/core/services/show_toast.dart';
 import 'package:ketab/core/utils/constants/colors.dart';
+import 'package:ketab/core/utils/constants/strings.dart';
 import 'package:ketab/core/widget/custom_button.dart';
 import 'package:ketab/core/widget/custom_text_form_field.dart';
+import 'package:ketab/features/home_feature/presentation/view/home_view.dart';
 import 'package:ketab/features/register_feature/presentation/view_model/register_cubit.dart';
 
 class ContainerOfTextFieldForRegister extends StatelessWidget {
@@ -17,7 +20,17 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
       child: BlocConsumer<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if(state is RegisterSuccess){
-            print('========> register successss is nowwwwwwwwwww') ;
+            showToast(text: 'Register Success', state: ToastState.success);
+            Strings.token = state.registerModel.data!.token!;
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeView(
+                      imageProfile: state.registerModel.data!.user!.image!,
+                      nameProfile: state.registerModel.data!.user!.name!,
+                    )));
+          }else if(state is RegisterError){
+            showToast(text: 'Register Error', state: ToastState.error);
           }
         },
         builder: (context, state) {
@@ -37,7 +50,6 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
                       hintText: 'Name',
                       function: (value){
                           if(value!.isEmpty){
-                            print(sl<RegisterCubit>().failureRegisterModel!.errors!.name![0]);
                            return sl<RegisterCubit>().failureRegisterModel!.errors!.name![0];
                           }
                           return null ;
@@ -51,7 +63,6 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
                       hintText: 'Email',
                       function: (value){
                         if(value!.isEmpty){
-                          print(sl<RegisterCubit>().failureRegisterModel!.errors!.name![0]);
                           return sl<RegisterCubit>().failureRegisterModel!.errors!.email![0];
                         }
                         return null ;
@@ -65,7 +76,6 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
                       hintText: 'Password',
                       function: (value){
                         if(value!.isEmpty){
-                          print(sl<RegisterCubit>().failureRegisterModel!.errors!.name![0]);
                           return sl<RegisterCubit>().failureRegisterModel!.errors!.password![0];
                         }
                         return null ;
@@ -81,7 +91,6 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
                       hintText: 'Confirm Password',
                       function: (value){
                         if(value!.isEmpty){
-                          print(sl<RegisterCubit>().failureRegisterModel!.errors!.name![0]);
                           return sl<RegisterCubit>().failureRegisterModel!.errors!.email![0];
                         }
                         return null ;

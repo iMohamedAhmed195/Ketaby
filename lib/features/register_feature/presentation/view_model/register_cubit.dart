@@ -1,13 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ketab/features/register_feature/data/register_model/failure_register_model.dart';
 import 'package:ketab/features/register_feature/data/register_model/register_model.dart';
 import 'package:ketab/features/register_feature/data/repos/register_repo.dart';
-import 'package:meta/meta.dart';
-
-
-
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
