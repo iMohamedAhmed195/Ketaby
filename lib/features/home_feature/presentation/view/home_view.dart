@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ketab/core/services/service_locator.dart';
+import 'package:ketab/core/utils/constants/colors.dart';
 import 'package:ketab/features/favorite_feature/presentation/view/favorite_view.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/image_in_appbar_action.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/menu_item.dart';
@@ -20,7 +21,132 @@ class HomeView extends StatelessWidget {
         listener: (context, state) {
         },
         builder: (context, state) {
-          return Scaffold(
+          return sl<HomeCubit>().currentIndex == 4 ? Scaffold(
+            backgroundColor: Colors.white,
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Styles.kPrimaryColor,
+                child: const Icon(Icons.favorite),
+                onPressed: (){
+                  sl<HomeCubit>().changeCurrentScreen(2);
+                  sl<HomeCubit>().changeCurrentIndex(2);
+                }
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            bottomNavigationBar: BottomAppBar(
+              shape: const CircularNotchedRectangle(),
+              notchMargin: 10,
+              child: SizedBox(
+                height: 60,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children:<Widget> [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: (){
+                            sl<HomeCubit>().changeCurrentScreen(0);
+                            sl<HomeCubit>().changeCurrentIndex(0);
+
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.home,
+                                color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
+                              ),
+                              Text(
+                                'Home',
+                                style: TextStyle(
+                                  color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: (){
+                            sl<HomeCubit>().changeCurrentScreen(1);
+                            sl<HomeCubit>().changeCurrentIndex(1);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.book,
+                                color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
+                              ),
+                              Text(
+                                'Books',
+                                style: TextStyle(
+                                  color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: (){
+                            sl<HomeCubit>().changeCurrentScreen(3);
+                            sl<HomeCubit>().changeCurrentIndex(3);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add_shopping_cart,
+                                color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
+                              ),
+                              Text(
+                                'Cart',
+                                style: TextStyle(
+                                  color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: (){
+                            sl<HomeCubit>().changeCurrentScreen(4);
+                            sl<HomeCubit>().changeCurrentIndex(4);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.person,
+                                color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
+                              ),
+                              Text(
+                                'Person',
+                                style: TextStyle(
+                                  color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            body: PageStorage(
+                bucket: sl<HomeCubit>().bucket,
+                child: sl<HomeCubit>().currentScreen),
+          ) : Scaffold(
               backgroundColor: Colors.white,
               appBar: PreferredSize(preferredSize: Size.fromHeight(MediaQuery
                   .sizeOf(context)
@@ -118,12 +244,12 @@ class HomeView extends StatelessWidget {
                                 children: [
                                   Icon(
                                       Icons.home,
-                                      color: sl<HomeCubit>().currentIndex == 0 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Home',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 0 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -140,12 +266,12 @@ class HomeView extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.book,
-                                    color: sl<HomeCubit>().currentIndex == 1 ? Colors.blue : Colors .grey,
+                                    color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Books',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 1 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -167,12 +293,12 @@ class HomeView extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.add_shopping_cart,
-                                    color: sl<HomeCubit>().currentIndex == 3 ? Colors.blue : Colors .grey,
+                                    color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Cart',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 3 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -189,12 +315,12 @@ class HomeView extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.person,
-                                    color: sl<HomeCubit>().currentIndex == 4 ? Colors.blue : Colors .grey,
+                                    color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Person',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 4 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],

@@ -46,6 +46,9 @@ static HomeCubit get(context) => BlocProvider.of(context);
     }else if(index == 3){
       currentScreen = screens[3];
       emit(ChangeCurrentScreen());
+    }else if(index == 4){
+      currentScreen = screens[4];
+      emit(ChangeCurrentScreen());
     }
   }
   changeCurrentIndex(int index){
