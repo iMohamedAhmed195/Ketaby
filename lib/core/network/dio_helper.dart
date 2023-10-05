@@ -16,10 +16,10 @@ class DioHelper {
         receiveDataWhenStatusError: true,
       ),
     );
-
-    final loggingInterceptor = LoggingInterceptor();
-
-    dio.interceptors.add(loggingInterceptor);
+    //
+    // final loggingInterceptor = LoggingInterceptor();
+    //
+    // dio.interceptors.add(loggingInterceptor);
   }
 
    Future<Response> getData({
