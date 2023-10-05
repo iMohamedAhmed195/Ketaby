@@ -9,6 +9,7 @@ import 'package:ketab/features/home_feature/data/home_model/new_arrival_model.da
 import 'package:ketab/features/home_feature/data/home_model/slider_model.dart';
 import 'package:ketab/features/home_feature/data/repos/home_repo.dart';
 import 'package:ketab/features/home_feature/presentation/view/home_view_body.dart';
+import 'package:ketab/features/profile_feature/presentation/view/profile_view.dart';
 import 'package:ketab/features/search_feature/presentation/view/search_view.dart';
 
 part 'home_state.dart';
@@ -29,7 +30,7 @@ static HomeCubit get(context) => BlocProvider.of(context);
     const SearchView(),
     const FavoriteView(),
     const CartViewBody(),
-    const HomeViewBody(),
+    const ProfileView(),
 
   ];
   changeCurrentScreen(int index){
