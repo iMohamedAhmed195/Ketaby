@@ -13,6 +13,9 @@ import 'package:ketab/features/home_feature/presentation/view_model/home_cubit.d
 import 'package:ketab/features/login_feature/data/repo/login_repo.dart';
 import 'package:ketab/features/login_feature/data/repo/login_repo_impl.dart';
 import 'package:ketab/features/login_feature/presentation/view_model/login_cubit.dart';
+import 'package:ketab/features/profile_feature/data/repo/profile_repo.dart';
+import 'package:ketab/features/profile_feature/data/repo/profile_repo_impl.dart';
+import 'package:ketab/features/profile_feature/presentation/view_model/profile_cubit.dart';
 import 'package:ketab/features/register_feature/data/repos/register_repo.dart';
 import 'package:ketab/features/register_feature/data/repos/register_repo_impl.dart';
 import 'package:ketab/features/register_feature/presentation/view_model/register_cubit.dart';
@@ -39,6 +42,8 @@ class ServiceLocator {
     sl.registerLazySingleton(() => FavoriteCubit(sl()));
     sl.registerLazySingleton<CartRepo>(() => CartRepoImpl());
     sl.registerLazySingleton(() => CartCubit(sl()));
+sl.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl());
+    sl.registerLazySingleton(() => ProfileCubit(sl()));
 
 
 

@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:ketab/core/widget/disable_custom_text_field.dart';
 
 class TextFieldSection extends StatelessWidget {
-  const TextFieldSection({super.key});
-
+  const TextFieldSection({super.key, required this.name, required this.email, required this.phone, required this.city, required this.address});
+  final String name ;
+  final String email ;
+  final String phone ;
+  final String city ;
+  final String address ;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -15,13 +19,13 @@ class TextFieldSection extends StatelessWidget {
             color: Colors.grey[100],
             borderRadius: BorderRadius.circular(20)
         ),
-        child: const Column(
+        child:  Column(
           children: [
-            DisablesCustomTextField(dataText: 'Mohamed Ahmed', iconPrefix: Icons.person, labelText: 'name',),
-            DisablesCustomTextField(dataText: 'Mohamed Ahmed@gmail.com', iconPrefix: Icons.email, labelText: 'email',),
-            DisablesCustomTextField(dataText: '01148441258', iconPrefix: Icons.phone, labelText: 'phone',),
-            DisablesCustomTextField(dataText: 'Giza', iconPrefix: Icons.location_city, labelText: 'city',),
-            DisablesCustomTextField(dataText: 'saees', iconPrefix: Icons.edit_location_sharp, labelText: 'address',),
+            DisablesCustomTextField(dataText: name, iconPrefix: Icons.person, labelText: 'name',),
+            DisablesCustomTextField(dataText: email, iconPrefix: Icons.email, labelText: 'email',),
+            DisablesCustomTextField(dataText: phone, iconPrefix: Icons.phone, labelText: 'phone',),
+            DisablesCustomTextField(dataText: city, iconPrefix: Icons.location_city, labelText: 'city',),
+            DisablesCustomTextField(dataText: address, iconPrefix: Icons.edit_location_sharp, labelText: 'address',),
           ],
         ),
       ),

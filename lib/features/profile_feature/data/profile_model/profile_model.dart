@@ -17,9 +17,9 @@ class Data {
   int? id;
   String? name;
   String? email;
-  Null? address;
-  Null? city;
-  Null? phone;
+  String? address;
+  String? city;
+  String? phone;
   bool? emailVerified;
   String? image;
 

@@ -4,8 +4,9 @@ import 'package:ketab/core/utils/constants/assets.dart';
 import 'package:ketab/core/utils/constants/colors.dart';
 
 class ImageProfileSection extends StatelessWidget {
-  const ImageProfileSection({super.key});
+  const ImageProfileSection({super.key, required this.image});
 
+  final String image;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -62,7 +63,7 @@ class ImageProfileSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100)
               ),
               child: Image(
-                image: const AssetImage(AssetsData.profile),
+                image: NetworkImage(image ?? ''),
                 width: MediaQuery.sizeOf(context).width * 0.5,
                 height:MediaQuery.sizeOf(context).height * 0.2 ,
                 fit: BoxFit.cover,
