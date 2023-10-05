@@ -9,8 +9,8 @@ class BestSellerListView extends StatelessWidget {
   final List<String> nameBook ;
   final List<String> categoryBook ;
   final List<String> priceBeforeBook ;
-  final List<double> priceAfterBook ;
-  final List<int> discountBook ;
+  final List<num> priceAfterBook ;
+  final List<num> discountBook ;
   final int length;
   @override
   Widget build(BuildContext context) {

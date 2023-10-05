@@ -9,9 +9,9 @@ class BestSellerModel {
   BestSellerModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
-
     status = json['status'];
   }
+
 }
 
 class Data {
@@ -28,6 +28,7 @@ class Data {
     }
   }
 
+
 }
 
 class Products {
@@ -35,10 +36,10 @@ class Products {
   String? name;
   String? description;
   String? price;
-  int? discount;
-  double? priceAfterDiscount;
-  int? stock;
-  int? bestSeller;
+  num? discount;
+  num? priceAfterDiscount;
+  num? stock;
+  num? bestSeller;
   String? image;
   String? category;
 
@@ -66,5 +67,6 @@ class Products {
     image = json['image'];
     category = json['category'];
   }
+
 
 }
