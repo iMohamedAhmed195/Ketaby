@@ -1,12 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ketab/features/cart_feature/presentation/view/widget/cart_view_body.dart';
+import 'package:ketab/features/favorite_feature/presentation/view/favorite_view.dart';
 import 'package:ketab/features/home_feature/data/home_model/best_seller_model.dart';
 import 'package:ketab/features/home_feature/data/home_model/category_model.dart';
 import 'package:ketab/features/home_feature/data/home_model/new_arrival_model.dart';
 import 'package:ketab/features/home_feature/data/home_model/slider_model.dart';
 import 'package:ketab/features/home_feature/data/repos/home_repo.dart';
 import 'package:ketab/features/home_feature/presentation/view/home_view_body.dart';
+import 'package:ketab/features/search_feature/presentation/view/search_view.dart';
 
 part 'home_state.dart';
 
@@ -23,8 +26,9 @@ static HomeCubit get(context) => BlocProvider.of(context);
   final PageStorageBucket bucket = PageStorageBucket();
   List<Widget> screens = [
     const HomeViewBody(),
-    const HomeViewBody(),
-    const HomeViewBody(),
+    const SearchView(),
+    const FavoriteView(),
+    const CartViewBody(),
     const HomeViewBody(),
 
   ];
@@ -92,8 +96,8 @@ static HomeCubit get(context) => BlocProvider.of(context);
    List<String> nameBook=[] ;
    List<String> categoryBook =[];
    List<String> priceBeforeBook =[];
-   List<double> priceAfterBook=[] ;
-   List<int> discountBook =[];
+   List<num> priceAfterBook=[] ;
+   List<num> discountBook =[];
    int lengthBestSeller = 0 ;
   getAllDataForBestSeller(){
     for(int i = 0 ; i < bestSellerModel!.data!.products!.length ; i++){

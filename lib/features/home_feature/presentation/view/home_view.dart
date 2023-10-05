@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ketab/core/services/service_locator.dart';
+import 'package:ketab/features/favorite_feature/presentation/view/favorite_view.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/image_in_appbar_action.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/menu_item.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/title_of_app_bar.dart';
@@ -88,7 +89,10 @@ class HomeView extends StatelessWidget {
               ),
               floatingActionButton: FloatingActionButton(
                 child: const Icon(Icons.favorite),
-              onPressed: (){}
+              onPressed: (){
+                sl<HomeCubit>().changeCurrentScreen(2);
+                sl<HomeCubit>().changeCurrentIndex(2);
+              }
           ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: BottomAppBar(
@@ -155,20 +159,20 @@ class HomeView extends StatelessWidget {
                             MaterialButton(
                               minWidth: 40,
                               onPressed: (){
-                                sl<HomeCubit>().changeCurrentScreen(2);
-                                sl<HomeCubit>().changeCurrentIndex(2);
+                                sl<HomeCubit>().changeCurrentScreen(3);
+                                sl<HomeCubit>().changeCurrentIndex(3);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.add_shopping_cart,
-                                    color: sl<HomeCubit>().currentIndex == 2 ? Colors.blue : Colors .grey,
+                                    color: sl<HomeCubit>().currentIndex == 3 ? Colors.blue : Colors .grey,
                                   ),
                                   Text(
                                     'Cart',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 2 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 3 ? Colors.blue : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -177,20 +181,20 @@ class HomeView extends StatelessWidget {
                             MaterialButton(
                               minWidth: 40,
                               onPressed: (){
-                                sl<HomeCubit>().changeCurrentScreen(3);
-                                sl<HomeCubit>().changeCurrentIndex(3);
+                                sl<HomeCubit>().changeCurrentScreen(4);
+                                sl<HomeCubit>().changeCurrentIndex(4);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.person,
-                                    color: sl<HomeCubit>().currentIndex == 3 ? Colors.blue : Colors .grey,
+                                    color: sl<HomeCubit>().currentIndex == 4 ? Colors.blue : Colors .grey,
                                   ),
                                   Text(
                                     'Person',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 3 ? Colors.blue : Colors .grey,
+                                      color: sl<HomeCubit>().currentIndex == 4 ? Colors.blue : Colors .grey,
                                     ),
                                   )
                                 ],

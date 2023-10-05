@@ -42,11 +42,13 @@ class HomeRepoImpl extends HomeRepo{
           url:ApiConstants.bestSellerData,
           token: Strings.token
       );
-
       bestSellerModel = BestSellerModel.fromJson(result.data);
+      print(result.data);
+
       return right(bestSellerModel!);
 
     }  catch (error) {
+      print(error.toString());
       log('there is an error when you get data in home');
       return left(ServerFailure(error.toString()));
     }
