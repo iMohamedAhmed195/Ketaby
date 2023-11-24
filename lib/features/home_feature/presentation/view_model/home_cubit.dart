@@ -100,6 +100,8 @@ static HomeCubit get(context) => BlocProvider.of(context);
    List<String> nameBook=[] ;
    List<String> categoryBook =[];
    List<String> priceBeforeBook =[];
+   List<String> description=[] ;
+   List<int> bookId=[] ;
    List<num> priceAfterBook=[] ;
    List<num> discountBook =[];
    int lengthBestSeller = 0 ;
@@ -111,6 +113,8 @@ static HomeCubit get(context) => BlocProvider.of(context);
       priceBeforeBook.add(bestSellerModel!.data!.products![i].price!);
       priceAfterBook.add(bestSellerModel!.data!.products![i].priceAfterDiscount!);
       discountBook.add(bestSellerModel!.data!.products![i].discount!);
+      description.add(bestSellerModel!.data!.products![i].description!);
+      bookId.add(bestSellerModel!.data!.products![i].id!);
     }
     lengthBestSeller = bestSellerModel!.data!.products!.length;
 
@@ -168,6 +172,8 @@ static HomeCubit get(context) => BlocProvider.of(context);
   List<String> nameBookNewArrival=[] ;
   List<String> categoryBookNewArrival =[];
   List<String> priceBeforeBookNewArrival =[];
+  List<String> descriptionNewArrival =[];
+  List<int> bookIdArrival =[];
   List<double> priceAfterBookNewArrival=[] ;
   List<int> discountBookNewArrival =[];
   int lengthNewArrival = 0 ;
@@ -179,6 +185,8 @@ static HomeCubit get(context) => BlocProvider.of(context);
       priceBeforeBookNewArrival.add(newArrivalModel!.data!.products![i].price!);
       priceAfterBookNewArrival.add(newArrivalModel!.data!.products![i].priceAfterDiscount!);
       discountBookNewArrival.add(newArrivalModel!.data!.products![i].discount!);
+      descriptionNewArrival.add(newArrivalModel!.data!.products![i].description!);
+      bookIdArrival.add(newArrivalModel!.data!.products![i].id!);
     }
     lengthNewArrival = newArrivalModel!.data!.products!.length;
 

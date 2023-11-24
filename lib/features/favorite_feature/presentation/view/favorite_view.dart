@@ -19,13 +19,15 @@ class FavoriteView extends StatelessWidget {
             return Column(
               children: [
                 FavoriteViewBody(
-                  imageBook: sl<FavoriteCubit>().imageFavoriteBook,
-                  nameBook: sl<FavoriteCubit>().nameFavoriteBook,
-                  categoryBook:sl<FavoriteCubit>().categoryFavoriteBook,
-                  priceBeforeBook: sl<FavoriteCubit>().priceAfterFavoriteBook,
-                  priceAfterBook: sl<FavoriteCubit>().priceBeforeFavoriteBook,
-                  discountBook: sl<FavoriteCubit>().discountFavoriteBook,
-                  length: sl<FavoriteCubit>().lengthFavoriteBooks,
+                  imageBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().imageFavoriteBook : sl<FavoriteCubit>().imageFavoriteBookAfterDelete,
+                  nameBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().nameFavoriteBook : sl<FavoriteCubit>().nameFavoriteBookAfterDelete,
+                  categoryBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ?sl<FavoriteCubit>().categoryFavoriteBook : sl<FavoriteCubit>().categoryFavoriteBookAfterDelete,
+                  priceBeforeBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().priceAfterFavoriteBook : sl<FavoriteCubit>().priceAfterFavoriteBookAfterDelete,
+                  priceAfterBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().priceBeforeFavoriteBook : sl<FavoriteCubit>().priceBeforeFavoriteBookAfterDelete,
+                  discountBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().discountFavoriteBook : sl<FavoriteCubit>().discountFavoriteBookAfterDelete,
+                  length:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().lengthFavoriteBooks : sl<FavoriteCubit>().lengthFavoriteBooksAfterDelete,
+                  description:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().description : sl<FavoriteCubit>().descriptionAfterDelete,
+                  bookId:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().bookId : sl<FavoriteCubit>().bookIdAfterDelete,
                 )
               ],
             );

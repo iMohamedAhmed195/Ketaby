@@ -33,6 +33,8 @@ class HomeViewBody extends StatelessWidget {
                 priceAfterBook: sl<HomeCubit>().priceAfterBook,
                 discountBook: sl<HomeCubit>().discountBook,
                 length: sl<HomeCubit>().lengthBestSeller,
+                description: sl<HomeCubit>().description,
+                bookId:sl<HomeCubit>().bookId,
               ),
               CategorySection(
                 nameCategory: sl<HomeCubit>().categories,
@@ -46,6 +48,8 @@ class HomeViewBody extends StatelessWidget {
                 priceAfterBook: sl<HomeCubit>().priceAfterBookNewArrival,
                 discountBook: sl<HomeCubit>().discountBookNewArrival,
                 length: sl<HomeCubit>().lengthNewArrival,
+                description: sl<HomeCubit>().description,
+                bookId: sl<HomeCubit>().bookIdArrival,
               )
             ],
           );

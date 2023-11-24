@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:ketab/features/book_details_feature/presentation/view/book_details_view.dart';
 import 'package:ketab/features/login_feature/presentation/view/login_view.dart';
 import 'package:ketab/features/on_boarding_view_feature/presentation/views/on_boarding_screen.dart';
 import 'package:ketab/features/register_feature/presentation/view/register_view.dart';
@@ -10,6 +11,7 @@ abstract class AppRouter {
   static const kLogin = '/Login';
   static const kRegister = '/Register';
   static const kHome = '/Home';
+  static const kBookDetails = '/BookDetails';
 
   static final router = GoRouter(
     routes: [
@@ -30,10 +32,6 @@ abstract class AppRouter {
         builder: (context, state) =>   const RegisterView(),
       ),
 
-  // GoRoute(
-  //       path: kHome,
-  //       builder: (context, state) =>   const HomeView(),
-  //     ),
 
 
     ],

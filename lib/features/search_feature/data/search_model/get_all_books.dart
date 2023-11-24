@@ -34,7 +34,7 @@ class Data {
 }
 
 class Products {
-  num? id;
+  int? id;
   String? name;
   String? description;
   String? price;

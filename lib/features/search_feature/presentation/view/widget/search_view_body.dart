@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ketab/core/services/service_locator.dart';
-import 'package:ketab/core/utils/constants/assets.dart';
-import 'package:ketab/core/utils/constants/colors.dart';
 import 'package:ketab/features/search_feature/presentation/view/widget/book_search_list_view.dart';
 import 'package:ketab/features/search_feature/presentation/view/widget/text_field_search_section.dart';
 import 'package:ketab/features/search_feature/presentation/view_model/search_cubit.dart';
@@ -27,6 +24,8 @@ class SearchViewBody extends StatelessWidget {
               priceAfterBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().priceAfterBook:sl<SearchCubit>().priceAfterSearchBook,
               discountBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().discountBook:sl<SearchCubit>().discountSearchBook,
               length:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().lengthBooks:sl<SearchCubit>().lengthSearchSeller,
+              description: sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().description:sl<SearchCubit>().descriptionSearchBook,
+              bookId: sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().bookId:sl<SearchCubit>().bookIdSearchBook,
             ),
           ],
         );

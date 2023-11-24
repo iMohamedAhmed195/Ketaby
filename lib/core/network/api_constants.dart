@@ -12,7 +12,10 @@ class ApiConstants{
  static const String searchBooks = '/products-search';
  static const String getFavorite = '/wishlist';
  static const String getCart = '/cart';
- static const String getProfile = '//profile';
+ static const String getProfile = '/profile';
+ static const String makeFavorite = '/add-to-wishlist';
+ static const String deleteFavorite = '/remove-from-wishlist';
+ static const String deleteFromCart = '/remove-from-cart';
 }
 
 

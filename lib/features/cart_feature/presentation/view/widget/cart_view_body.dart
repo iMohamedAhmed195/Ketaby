@@ -20,14 +20,14 @@ class CartViewBody extends StatelessWidget {
             alignment: AlignmentDirectional.bottomCenter,
             children: [
               CartDetailsListView(
-                imageBook:  sl<CartCubit>().itemProductImage,
-                nameBook:  sl<CartCubit>().itemProductName,
-                priceBeforeBook:  sl<CartCubit>().itemProductPrice,
-                priceAfterBook:  sl<CartCubit>().itemProductPriceAfterDiscount,
-                discountBook:  sl<CartCubit>().itemProductDiscount,
-                length:  sl<CartCubit>().lengthCartBooks,
+                imageBook: sl<CartCubit>().getAllCartModel?.data != null? sl<CartCubit>().itemProductImage : sl<CartCubit>().itemProductImageAfterDelete,
+                nameBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductName : sl<CartCubit>().itemProductNameAfterDelete,
+                priceBeforeBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductPrice:  sl<CartCubit>().itemProductPriceAfterDelete ,
+                priceAfterBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductPriceAfterDiscount:  sl<CartCubit>().itemProductPriceAfterDiscountAfterDelete,
+                discountBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductDiscount:  sl<CartCubit>().itemProductDiscountAfterDelete,
+                length:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().lengthCartBooks:  sl<CartCubit>().lengthCartBooksAfterDelete,
               ),
-              TotalPriceSection(finalPrice: sl<CartCubit>().totalPrice,),
+              TotalPriceSection(finalPrice:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().totalPrice : sl<CartCubit>().totalPriceAfterDelete,),
             ],
           );
         },

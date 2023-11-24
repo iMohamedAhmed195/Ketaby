@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ketab/core/network/dio_helper.dart';
+import 'package:ketab/features/book_details_feature/data/make_favorite_model/make_favorite_model.dart';
+import 'package:ketab/features/book_details_feature/data/repo/make_favorite_repo.dart';
+import 'package:ketab/features/book_details_feature/data/repo/make_favorite_repo_impl.dart';
+import 'package:ketab/features/book_details_feature/presentation/view_model/details_cubit.dart';
 import 'package:ketab/features/cart_feature/data/repo/cart_repo.dart';
 import 'package:ketab/features/cart_feature/data/repo/cart_repo_impl.dart';
 import 'package:ketab/features/cart_feature/presentation/view_model/cart_cubit.dart';
@@ -38,12 +42,15 @@ class ServiceLocator {
     sl.registerLazySingleton(() => HomeCubit(sl()));
     sl.registerLazySingleton<SearchRepo>(() => SearchRepoImpl());
     sl.registerLazySingleton(() => SearchCubit(sl()));
+    sl.registerLazySingleton<MakeAnDRemoveFavoriteRepo>(() => MakeAndRemoveFavoriteRepoImpl());
+    sl.registerLazySingleton(() => DetailsCubit(sl()));
     sl.registerLazySingleton<FavoriteRepo>(() => FavoriteRepoImpl());
     sl.registerLazySingleton(() => FavoriteCubit(sl()));
     sl.registerLazySingleton<CartRepo>(() => CartRepoImpl());
     sl.registerLazySingleton(() => CartCubit(sl()));
-sl.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl());
+    sl.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl());
     sl.registerLazySingleton(() => ProfileCubit(sl()));
+
 
 
 

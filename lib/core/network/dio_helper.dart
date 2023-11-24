@@ -4,6 +4,7 @@ import 'package:ketab/core/network/api_constants.dart';
 import 'package:ketab/core/network/logging_interceptor.dart';
 
 
+
 class DioHelper {
     Dio dio;
 
@@ -16,10 +17,10 @@ class DioHelper {
         receiveDataWhenStatusError: true,
       ),
     );
-    //
-    // final loggingInterceptor = LoggingInterceptor();
-    //
-    // dio.interceptors.add(loggingInterceptor);
+
+    final loggingInterceptor = LoggingInterceptor();
+
+    dio.interceptors.add(loggingInterceptor);
   }
 
    Future<Response> getData({

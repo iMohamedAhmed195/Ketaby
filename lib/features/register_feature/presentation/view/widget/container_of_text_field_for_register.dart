@@ -28,6 +28,7 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
                     builder: (context) => HomeView(
                       imageProfile: state.registerModel.data!.user!.image!,
                       nameProfile: state.registerModel.data!.user!.name!,
+                      emailProfile:state.registerModel.data!.user!.email!,
                     )));
           }else if(state is RegisterError){
             showToast(text: 'Register Error', state: ToastState.error);

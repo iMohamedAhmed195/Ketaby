@@ -1,6 +1,5 @@
 part of 'cart_cubit.dart';
 
-@immutable
 abstract class CartState {}
 
 class CartInitial extends CartState {}
@@ -12,3 +11,11 @@ class GetAllCartSuccess extends CartState {
   GetAllCartSuccess(this.getAllCartModel);
 }
 class GetAllCartError extends CartState {}
+class DeleteFromCartSuccess extends CartState {
+  final  DeleteItemCartModel deleteItemCartModel;
+
+  DeleteFromCartSuccess(this.deleteItemCartModel);
+}
+class DeleteFromCartError extends CartState {}
+
+class ChangeNumberOfBooksInCart extends CartState {}

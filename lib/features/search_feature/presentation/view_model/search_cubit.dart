@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +34,8 @@ class SearchCubit extends Cubit<SearchState> {
   List<String> nameBook=[] ;
   List<String> categoryBook =[];
   List<String> priceBeforeBook =[];
+  List<String> description =[];
+  List<int> bookId =[];
   List<num> priceAfterBook=[] ;
   List<num> discountBook =[];
   int lengthBooks = 0 ;
@@ -46,6 +47,8 @@ class SearchCubit extends Cubit<SearchState> {
       priceBeforeBook.add(getAllBooksModel!.data!.products![i].price!);
       priceAfterBook.add(getAllBooksModel!.data!.products![i].priceAfterDiscount!);
       discountBook.add(getAllBooksModel!.data!.products![i].discount!);
+      description.add(getAllBooksModel!.data!.products![i].description!);
+      bookId.add(getAllBooksModel!.data!.products![i].id!);
     }
     lengthBooks = getAllBooksModel!.data!.products!.length;
 
@@ -76,6 +79,8 @@ class SearchCubit extends Cubit<SearchState> {
   List<String> nameSearchBook=[] ;
   List<String> categorySearchBook =[];
   List<String> priceBeforeSearchBook =[];
+  List<String> descriptionSearchBook =[];
+  List<int> bookIdSearchBook =[];
   List<num> priceAfterSearchBook=[] ;
   List<num> discountSearchBook =[];
   int lengthSearchSeller = 0 ;
@@ -87,6 +92,8 @@ class SearchCubit extends Cubit<SearchState> {
       priceBeforeSearchBook.add(searchModel!.data!.products![i].price!);
       priceAfterSearchBook.add(searchModel!.data!.products![i].priceAfterDiscount!);
       discountSearchBook.add(searchModel!.data!.products![i].discount!);
+      descriptionSearchBook.add(searchModel!.data!.products![i].description!);
+      bookIdSearchBook.add(searchModel!.data!.products![i].id!);
     }
     lengthSearchSeller = searchModel!.data!.products!.length;
   }

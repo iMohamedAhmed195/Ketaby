@@ -1,12 +1,12 @@
-class GetAllCartModel {
+class DeleteItemCartModel {
   Data? data;
   String? message;
 
   num? status;
 
-  GetAllCartModel({this.data, this.message, this.status});
+  DeleteItemCartModel({this.data, this.message, this.status});
 
-  GetAllCartModel.fromJson(Map<String, dynamic> json) {
+  DeleteItemCartModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
     status = json['status'];

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ketab/core/utils/constants/assets.dart';
 import 'package:ketab/core/utils/constants/colors.dart';
 
 class ImageProfileSection extends StatelessWidget {
@@ -63,7 +62,7 @@ class ImageProfileSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100)
               ),
               child: Image(
-                image: NetworkImage(image ?? ''),
+                image: NetworkImage(image),
                 width: MediaQuery.sizeOf(context).width * 0.5,
                 height:MediaQuery.sizeOf(context).height * 0.2 ,
                 fit: BoxFit.cover,

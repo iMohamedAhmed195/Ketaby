@@ -27,6 +27,7 @@ class ContainerOfTextField extends StatelessWidget {
                     builder: (context) => HomeView(
                       imageProfile: state.loginModel.data!.user!.image!,
                       nameProfile: state.loginModel.data!.user!.name!,
+                      emailProfile: state.loginModel.data!.user!.email!,
                     )));
           }else if(state is LoginError){
             showToast(text: 'Login Error', state: ToastState.error);

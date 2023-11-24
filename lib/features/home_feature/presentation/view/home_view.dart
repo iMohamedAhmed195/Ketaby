@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ketab/core/services/service_locator.dart';
 import 'package:ketab/core/utils/constants/colors.dart';
-import 'package:ketab/features/favorite_feature/presentation/view/favorite_view.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/image_in_appbar_action.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/menu_item.dart';
 import 'package:ketab/features/home_feature/presentation/view/widget/title_of_app_bar.dart';
@@ -10,9 +10,10 @@ import 'package:ketab/features/home_feature/presentation/view_model/home_cubit.d
 
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key, required this.imageProfile, required this.nameProfile});
+  const HomeView({super.key, required this.imageProfile, required this.nameProfile, required this.emailProfile});
   final String imageProfile;
   final String nameProfile;
+  final String emailProfile;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -146,7 +147,8 @@ class HomeView extends StatelessWidget {
             body: PageStorage(
                 bucket: sl<HomeCubit>().bucket,
                 child: sl<HomeCubit>().currentScreen),
-          ) : Scaffold(
+          ) :
+          Scaffold(
               backgroundColor: Colors.white,
               appBar: PreferredSize(preferredSize: Size.fromHeight(MediaQuery
                   .sizeOf(context)
@@ -197,17 +199,101 @@ class HomeView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 50.0),
-                        child: Column(
-                          children: [
-                            MenuItem(
-                                text: 'Add User',
-                                icon: Icons.add,
-                                context: context),
+                      Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: MediaQuery.sizeOf(context).height * 0.3,
+                            color: Styles.kPrimaryColor,
+                            child:Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding:  EdgeInsets.only(right: 20.0.r),
+                                    child: Container(
+                                      width: 80.w,
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius: BorderRadius.circular(250.w)
+                                      ),
+                                      child: Image(
+                                        image: NetworkImage(imageProfile),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    '$nameProfile',
+                                    style: TextStyle(
+                                        fontSize: 24.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white
+                                    ),
+                                  ),
+                                  Text(
+                                    '$emailProfile',
+                                    style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white
+                                    ),
+                                  ),
 
-                          ],
-                        ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          MenuItem(
+                              text: 'Order History',
+                              icon: Icons.history_edu,
+                              context: context
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only(right: 20.0.w,left: 20.0.w),
+                            child: Container(
+                              color: Colors.grey,
+                              height: 1,
+                              width: double.infinity,
+                            ),
+                          ),
+                          MenuItem(
+                              text: 'Edit Profile',
+                              icon: Icons.edit,
+                              context: context
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only( right: 20.0.w,left: 20.0.w),
+                            child: Container(
+                              color: Colors.grey,
+                              height: 1,
+                              width: double.infinity,
+                            ),
+                          ),
+                          MenuItem(
+                              text: 'Change Password',
+                              icon: Icons.change_circle_outlined,
+                              context: context
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only( right: 20.0.w,left: 20.0.w),
+                            child: Container(
+                              color: Colors.grey,
+                              height: 1,
+                              width: double.infinity,
+                            ),
+                          ),
+                          MenuItem(
+                              text: 'LogOut',
+                              icon: Icons.exit_to_app_rounded,
+                              context: context,
+                            color: Colors.red,
+                          ),
+
+                        ],
                       )
                     ],
                   ),

@@ -12,10 +12,10 @@ class SlidingText extends StatelessWidget {
           return SlideTransition(
               position: slidingAnimation,
               child: const Text(
-                "Make Yor Tasks",
+                "Make Your Tasks",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.bold
                 ),

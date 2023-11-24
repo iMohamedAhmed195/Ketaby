@@ -5,7 +5,7 @@ import 'package:ketab/core/utils/constants/colors.dart';
 class TotalPriceSection extends StatelessWidget {
   const TotalPriceSection({super.key, required this.finalPrice});
 
-  final String finalPrice;
+  final num finalPrice;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +30,7 @@ class TotalPriceSection extends StatelessWidget {
               ),
             ),
             Text(
-              '${finalPrice} L.E',
+              '$finalPrice L.E',
               style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,

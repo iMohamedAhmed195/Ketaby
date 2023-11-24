@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuItem extends StatelessWidget {
   const MenuItem(
       {super.key,
       required this.text,
       required this.icon,
-      required this.context});
+      required this.context,
+        this.color
+      });
 
   final String text;
   final IconData icon;
   final BuildContext context;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -17,10 +21,9 @@ class MenuItem extends StatelessWidget {
         onTap: () {
         },
         child: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Container(
-            height: 50,
-            color: const Color(0xffF3FAF9),
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: SizedBox(
+            height: 30,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -30,12 +33,19 @@ class MenuItem extends StatelessWidget {
                 Icon(
                   icon,
                   size: 20,
-                  color: Colors.black,
+                  color:color ?? Colors.grey[700],
                 ),
                 const SizedBox(
                   width: 20,
                 ),
-                Text(text),
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[700]
+                  ),
+                ),
               ],
             ),
           ),
