@@ -11,8 +11,9 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartCubit cartCubit=sl<CartCubit>();
     return BlocProvider(
-      create: (context) => sl<CartCubit>()..getAllCart(),
+      create: (context) => cartCubit..getAllCart(),
       child: BlocConsumer<CartCubit, CartState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -20,14 +21,15 @@ class CartViewBody extends StatelessWidget {
             alignment: AlignmentDirectional.bottomCenter,
             children: [
               CartDetailsListView(
-                imageBook: sl<CartCubit>().getAllCartModel?.data != null? sl<CartCubit>().itemProductImage : sl<CartCubit>().itemProductImageAfterDelete,
-                nameBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductName : sl<CartCubit>().itemProductNameAfterDelete,
-                priceBeforeBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductPrice:  sl<CartCubit>().itemProductPriceAfterDelete ,
-                priceAfterBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductPriceAfterDiscount:  sl<CartCubit>().itemProductPriceAfterDiscountAfterDelete,
-                discountBook:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().itemProductDiscount:  sl<CartCubit>().itemProductDiscountAfterDelete,
-                length:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().lengthCartBooks:  sl<CartCubit>().lengthCartBooksAfterDelete,
+                imageBook: cartCubit.getAllCartModel?.data != null? cartCubit.itemProductImage : cartCubit.itemProductImageAfterDelete,
+                nameBook:cartCubit.getAllCartModel?.data != null?  cartCubit.itemProductName : cartCubit.itemProductNameAfterDelete,
+                priceBeforeBook:cartCubit.getAllCartModel?.data != null?  cartCubit.itemProductPrice:  cartCubit.itemProductPriceAfterDelete ,
+                priceAfterBook:cartCubit.getAllCartModel?.data != null?  cartCubit.itemProductPriceAfterDiscount:  cartCubit.itemProductPriceAfterDiscountAfterDelete,
+                discountBook:cartCubit.getAllCartModel?.data != null?  cartCubit.itemProductDiscount:  cartCubit.itemProductDiscountAfterDelete,
+                length:cartCubit.getAllCartModel?.data != null?  cartCubit.lengthCartBooks:  cartCubit.lengthCartBooksAfterDelete,
+                cartCubit: cartCubit,
               ),
-              TotalPriceSection(finalPrice:sl<CartCubit>().getAllCartModel?.data != null?  sl<CartCubit>().totalPrice : sl<CartCubit>().totalPriceAfterDelete,),
+              TotalPriceSection(finalPrice:cartCubit.getAllCartModel?.data != null?  cartCubit.totalPrice : cartCubit.totalPriceAfterDelete,),
             ],
           );
         },

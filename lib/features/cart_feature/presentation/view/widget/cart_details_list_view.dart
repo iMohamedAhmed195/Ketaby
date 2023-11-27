@@ -13,13 +13,14 @@ class CartDetailsListView extends StatelessWidget {
       required this.priceBeforeBook,
       required this.priceAfterBook,
       required this.discountBook,
-      required this.length});
+      required this.length, required this.cartCubit});
   final List<String> imageBook;
   final List<String> nameBook;
   final List<String> priceBeforeBook;
   final List<num> priceAfterBook;
   final List<num> discountBook;
   final int length;
+  final CartCubit cartCubit ;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
@@ -128,19 +129,19 @@ class CartDetailsListView extends StatelessWidget {
                                                 child: GestureDetector(
                                               child: const Icon(Icons.add),
                                               onTap: () {
-                                                sl<CartCubit>()
+                                                cartCubit
                                                     .changeNumberOfBooks(true , index);
                                               },
                                             )),
                                             Expanded(
                                                 child: Center(
                                                     child: Text(
-                                                        ' ${sl<CartCubit>().itemQuantity[index]}'))),
+                                                        ' ${cartCubit.itemQuantity[index]}'))),
                                             Expanded(
                                                 child: GestureDetector(
                                               child: const Icon(Icons.remove),
                                               onTap: () {
-                                                sl<CartCubit>()
+                                                cartCubit
                                                     .changeNumberOfBooks(false , index);
                                               },
                                             ))
@@ -158,8 +159,8 @@ class CartDetailsListView extends StatelessWidget {
                                   children: [
                                     IconButton(
                                         onPressed: () {
-                                          sl<CartCubit>().changeNumberOfBooks(false , index);
-                                          sl<CartCubit>().deleteItemFromCart(index);
+                                          cartCubit.changeNumberOfBooks(false , index);
+                                          cartCubit.deleteItemFromCart(index);
                                         },
                                         icon: const Icon(
                                           Icons.delete,
@@ -176,8 +177,8 @@ class CartDetailsListView extends StatelessWidget {
                                         decoration: TextDecoration.lineThrough,
                                       ),
                                     ),
-                                    sl<CartCubit>().getAllCartModel!.data !=null ?Text(
-                                      '${sl<CartCubit>().itemTotal[index]} L.E',
+                                    cartCubit.getAllCartModel!.data !=null ?Text(
+                                      '${cartCubit.itemTotal[index]} L.E',
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       style: TextStyle(
@@ -185,7 +186,7 @@ class CartDetailsListView extends StatelessWidget {
                                           fontWeight: FontWeight.w600,
                                           color: Styles.kPrimaryColor),
                                     ) : Text(
-                                      '${sl<CartCubit>().itemTotalAfterDelete[index]} L.E',
+                                      '${cartCubit.itemTotalAfterDelete[index]} L.E',
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       style: TextStyle(

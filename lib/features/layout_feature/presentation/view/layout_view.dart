@@ -3,33 +3,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ketab/core/services/service_locator.dart';
 import 'package:ketab/core/utils/constants/colors.dart';
-import 'package:ketab/features/home_feature/presentation/view/widget/image_in_appbar_action.dart';
-import 'package:ketab/features/home_feature/presentation/view/widget/menu_item.dart';
-import 'package:ketab/features/home_feature/presentation/view/widget/title_of_app_bar.dart';
-import 'package:ketab/features/home_feature/presentation/view_model/home_cubit.dart';
+import 'package:ketab/features/layout_feature/presentation/view/widget/image_in_appbar_action.dart';
+import 'package:ketab/features/layout_feature/presentation/view/widget/menu_item.dart';
+import 'package:ketab/features/layout_feature/presentation/view/widget/title_of_app_bar.dart';
+
+import 'package:ketab/features/layout_feature/presentation/view_model/layout_cubit.dart';
 
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key, required this.imageProfile, required this.nameProfile, required this.emailProfile});
+class LayoutView extends StatelessWidget {
+  const LayoutView({super.key, required this.imageProfile, required this.nameProfile, required this.emailProfile});
   final String imageProfile;
   final String nameProfile;
   final String emailProfile;
   @override
   Widget build(BuildContext context) {
+    LayoutCubit layoutCubit = sl<LayoutCubit>();
     return BlocProvider(
-      create: (context) => sl<HomeCubit>()..getSliderData()..getBestSellerData()..getCategoryData()..getNewArrivalData(),
-      child: BlocConsumer<HomeCubit, HomeState>(
+      create: (context) => layoutCubit,
+      child: BlocConsumer<LayoutCubit, LayoutState>(
         listener: (context, state) {
         },
         builder: (context, state) {
-          return sl<HomeCubit>().currentIndex == 4 ? Scaffold(
+          return layoutCubit.currentIndex == 4 ? Scaffold(
             backgroundColor: Colors.white,
             floatingActionButton: FloatingActionButton(
               backgroundColor: Styles.kPrimaryColor,
                 child: const Icon(Icons.favorite),
                 onPressed: (){
-                  sl<HomeCubit>().changeCurrentScreen(2);
-                  sl<HomeCubit>().changeCurrentIndex(2);
+                  layoutCubit.changeCurrentScreen(2);
+                  layoutCubit.changeCurrentIndex(2);
                 }
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -47,8 +49,8 @@ class HomeView extends StatelessWidget {
                         MaterialButton(
                           minWidth: 40,
                           onPressed: (){
-                            sl<HomeCubit>().changeCurrentScreen(0);
-                            sl<HomeCubit>().changeCurrentIndex(0);
+                            layoutCubit.changeCurrentScreen(0);
+                            layoutCubit.changeCurrentIndex(0);
 
                           },
                           child: Column(
@@ -56,12 +58,12 @@ class HomeView extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.home,
-                                color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
+                                color: layoutCubit.currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
                               ),
                               Text(
                                 'Home',
                                 style: TextStyle(
-                                  color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
+                                  color: layoutCubit.currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
                                 ),
                               )
                             ],
@@ -70,20 +72,20 @@ class HomeView extends StatelessWidget {
                         MaterialButton(
                           minWidth: 40,
                           onPressed: (){
-                            sl<HomeCubit>().changeCurrentScreen(1);
-                            sl<HomeCubit>().changeCurrentIndex(1);
+                            layoutCubit.changeCurrentScreen(1);
+                            layoutCubit.changeCurrentIndex(1);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 Icons.book,
-                                color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
+                                color: layoutCubit.currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
                               ),
                               Text(
                                 'Books',
                                 style: TextStyle(
-                                  color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
+                                  color: layoutCubit.currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
                                 ),
                               )
                             ],
@@ -97,20 +99,20 @@ class HomeView extends StatelessWidget {
                         MaterialButton(
                           minWidth: 40,
                           onPressed: (){
-                            sl<HomeCubit>().changeCurrentScreen(3);
-                            sl<HomeCubit>().changeCurrentIndex(3);
+                            layoutCubit.changeCurrentScreen(3);
+                            layoutCubit.changeCurrentIndex(3);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 Icons.add_shopping_cart,
-                                color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
+                                color: layoutCubit.currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
                               ),
                               Text(
                                 'Cart',
                                 style: TextStyle(
-                                  color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
+                                  color: layoutCubit.currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
                                 ),
                               )
                             ],
@@ -119,20 +121,20 @@ class HomeView extends StatelessWidget {
                         MaterialButton(
                           minWidth: 40,
                           onPressed: (){
-                            sl<HomeCubit>().changeCurrentScreen(4);
-                            sl<HomeCubit>().changeCurrentIndex(4);
+                            layoutCubit.changeCurrentScreen(4);
+                            layoutCubit.changeCurrentIndex(4);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 Icons.person,
-                                color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
+                                color: layoutCubit.currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
                               ),
                               Text(
                                 'Person',
                                 style: TextStyle(
-                                  color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
+                                  color: layoutCubit.currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
                                 ),
                               )
                             ],
@@ -145,8 +147,8 @@ class HomeView extends StatelessWidget {
               ),
             ),
             body: PageStorage(
-                bucket: sl<HomeCubit>().bucket,
-                child: sl<HomeCubit>().currentScreen),
+                bucket: layoutCubit.bucket,
+                child: layoutCubit.currentScreen),
           ) :
           Scaffold(
               backgroundColor: Colors.white,
@@ -227,7 +229,7 @@ class HomeView extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    '$nameProfile',
+                                    nameProfile,
                                     style: TextStyle(
                                         fontSize: 24.sp,
                                         fontWeight: FontWeight.w500,
@@ -235,7 +237,7 @@ class HomeView extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    '$emailProfile',
+                                    emailProfile,
                                     style: TextStyle(
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
@@ -302,8 +304,8 @@ class HomeView extends StatelessWidget {
               floatingActionButton: FloatingActionButton(
                 child: const Icon(Icons.favorite),
               onPressed: (){
-                sl<HomeCubit>().changeCurrentScreen(2);
-                sl<HomeCubit>().changeCurrentIndex(2);
+                layoutCubit.changeCurrentScreen(2);
+                layoutCubit.changeCurrentIndex(2);
               }
           ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -321,8 +323,8 @@ class HomeView extends StatelessWidget {
                             MaterialButton(
                               minWidth: 40,
                                 onPressed: (){
-                                  sl<HomeCubit>().changeCurrentScreen(0);
-                                  sl<HomeCubit>().changeCurrentIndex(0);
+                                  layoutCubit.changeCurrentScreen(0);
+                                  layoutCubit.changeCurrentIndex(0);
 
                                 },
                               child: Column(
@@ -330,12 +332,12 @@ class HomeView extends StatelessWidget {
                                 children: [
                                   Icon(
                                       Icons.home,
-                                      color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
+                                      color: layoutCubit.currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Home',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
+                                      color: layoutCubit.currentIndex == 0 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -344,20 +346,20 @@ class HomeView extends StatelessWidget {
                             MaterialButton(
                               minWidth: 40,
                               onPressed: (){
-                                sl<HomeCubit>().changeCurrentScreen(1);
-                                sl<HomeCubit>().changeCurrentIndex(1);
+                                layoutCubit.changeCurrentScreen(1);
+                                layoutCubit.changeCurrentIndex(1);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.book,
-                                    color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
+                                    color: layoutCubit.currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Books',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
+                                      color: layoutCubit.currentIndex == 1 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -371,20 +373,20 @@ class HomeView extends StatelessWidget {
                             MaterialButton(
                               minWidth: 40,
                               onPressed: (){
-                                sl<HomeCubit>().changeCurrentScreen(3);
-                                sl<HomeCubit>().changeCurrentIndex(3);
+                                layoutCubit.changeCurrentScreen(3);
+                                layoutCubit.changeCurrentIndex(3);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.add_shopping_cart,
-                                    color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
+                                    color: layoutCubit.currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Cart',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
+                                      color: layoutCubit.currentIndex == 3 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -393,20 +395,20 @@ class HomeView extends StatelessWidget {
                             MaterialButton(
                               minWidth: 40,
                               onPressed: (){
-                                sl<HomeCubit>().changeCurrentScreen(4);
-                                sl<HomeCubit>().changeCurrentIndex(4);
+                                layoutCubit.changeCurrentScreen(4);
+                                layoutCubit.changeCurrentIndex(4);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.person,
-                                    color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
+                                    color: layoutCubit.currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
                                   ),
                                   Text(
                                     'Person',
                                     style: TextStyle(
-                                      color: sl<HomeCubit>().currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
+                                      color: layoutCubit.currentIndex == 4 ? Styles.kPrimaryColor : Colors .grey,
                                     ),
                                   )
                                 ],
@@ -419,8 +421,8 @@ class HomeView extends StatelessWidget {
               ),
             ),
             body: PageStorage(
-                bucket: sl<HomeCubit>().bucket,
-                child: sl<HomeCubit>().currentScreen),
+                bucket: layoutCubit.bucket,
+                child: layoutCubit.currentScreen),
           );
         },
       ),

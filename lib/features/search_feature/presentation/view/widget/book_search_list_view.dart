@@ -14,6 +14,7 @@ class SearchListView extends StatelessWidget {
   final List<num> priceAfterBook ;
   final List<num> discountBook ;
   final int length;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

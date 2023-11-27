@@ -5,16 +5,16 @@ import 'package:ketab/core/services/service_locator.dart';
 import 'package:ketab/features/search_feature/presentation/view_model/search_cubit.dart';
 
 class SearchSection extends StatelessWidget {
-  const SearchSection({super.key});
+  const SearchSection({super.key, required this.searchCubit});
 
-
+  final SearchCubit searchCubit;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SearchCubit , SearchState>(
       listener: (BuildContext context,  state) {},
       builder: (BuildContext context, state) {
         return Form(
-          key: sl<SearchCubit>().searchKey,
+          key: searchCubit.searchKey,
           child: Row(
             children: [
               Expanded(
@@ -32,7 +32,7 @@ class SearchSection extends StatelessWidget {
                         }
                         return null;
                       },
-                      controller: sl<SearchCubit>().searchController,
+                      controller: searchCubit.searchController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         hintText: 'Search',

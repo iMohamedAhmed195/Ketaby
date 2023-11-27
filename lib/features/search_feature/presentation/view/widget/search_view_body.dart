@@ -6,26 +6,27 @@ import 'package:ketab/features/search_feature/presentation/view/widget/text_fiel
 import 'package:ketab/features/search_feature/presentation/view_model/search_cubit.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
-
+  const SearchViewBody({super.key, required this.searchCubit});
+ final SearchCubit searchCubit;
   @override
   Widget build(BuildContext context) {
+    
     return BlocConsumer<SearchCubit, SearchState>(
       listener: (context, state) {},
       builder: (context, state) {
         return Column(
           children: [
-            const SearchSection(),
+             SearchSection(searchCubit: searchCubit,),
             SearchListView(
-              imageBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().imageBook :sl<SearchCubit>().imageSearchBook ,
-              nameBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().nameBook:sl<SearchCubit>().nameSearchBook,
-              categoryBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().categoryBook:sl<SearchCubit>().categorySearchBook,
-              priceBeforeBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().priceBeforeBook:sl<SearchCubit>().priceBeforeSearchBook,
-              priceAfterBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().priceAfterBook:sl<SearchCubit>().priceAfterSearchBook,
-              discountBook:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().discountBook:sl<SearchCubit>().discountSearchBook,
-              length:sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().lengthBooks:sl<SearchCubit>().lengthSearchSeller,
-              description: sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().description:sl<SearchCubit>().descriptionSearchBook,
-              bookId: sl<SearchCubit>().searchModel == null ? sl<SearchCubit>().bookId:sl<SearchCubit>().bookIdSearchBook,
+              imageBook:searchCubit.searchModel == null ? searchCubit.imageBook :searchCubit.imageSearchBook ,
+              nameBook:searchCubit.searchModel == null ? searchCubit.nameBook:searchCubit.nameSearchBook,
+              categoryBook:searchCubit.searchModel == null ? searchCubit.categoryBook:searchCubit.categorySearchBook,
+              priceBeforeBook:searchCubit.searchModel == null ? searchCubit.priceBeforeBook:searchCubit.priceBeforeSearchBook,
+              priceAfterBook:searchCubit.searchModel == null ? searchCubit.priceAfterBook:searchCubit.priceAfterSearchBook,
+              discountBook:searchCubit.searchModel == null ? searchCubit.discountBook:searchCubit.discountSearchBook,
+              length:searchCubit.searchModel == null ? searchCubit.lengthBooks:searchCubit.lengthSearchSeller,
+              description: searchCubit.searchModel == null ? searchCubit.description:searchCubit.descriptionSearchBook,
+              bookId: searchCubit.searchModel == null ? searchCubit.bookId:searchCubit.bookIdSearchBook,
             ),
           ],
         );

@@ -14,8 +14,9 @@ class DetailsImageSection extends StatelessWidget {
   final int bookId;
   @override
   Widget build(BuildContext context) {
+    DetailsCubit detailsCubit =sl<DetailsCubit>();
     return BlocProvider(
-      create: (context) =>sl<DetailsCubit>(),
+      create: (context) =>detailsCubit,
       child: BlocConsumer<DetailsCubit, DetailsState>(
         listener: (context, state) {
           if(state is MakeFavoriteSuccess){
@@ -60,12 +61,12 @@ class DetailsImageSection extends StatelessWidget {
                     const Spacer(),
                     GestureDetector(
                       onTap: (){
-                        sl<DetailsCubit>().changeFavorite(sl<DetailsCubit>().isFavorite);
-                        if( sl<DetailsCubit>().isFavorite == true)
+                        detailsCubit.changeFavorite(detailsCubit.isFavorite);
+                        if( detailsCubit.isFavorite == true)
                         {
-                          sl<DetailsCubit>().makeFavorite(bookId: bookId);
-                        }else if ( sl<DetailsCubit>().isFavorite ==false){
-                          sl<DetailsCubit>().removeFavorite(bookId: bookId);
+                          detailsCubit.makeFavorite(bookId: bookId);
+                        }else if ( detailsCubit.isFavorite ==false){
+                          detailsCubit.removeFavorite(bookId: bookId);
                         }
                       },
                       child: Container(
@@ -74,7 +75,7 @@ class DetailsImageSection extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.4),
                               borderRadius: BorderRadius.circular(40)),
-                          child:sl<DetailsCubit>().isFavorite
+                          child:detailsCubit.isFavorite
                               ? const Icon(
                                   Icons.favorite,
                                   color: Styles.kPrimaryColor,

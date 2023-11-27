@@ -20,41 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeRepo homeRepo ;
 
 
-static HomeCubit get(context) => BlocProvider.of(context);
 
-  int? currentIndex= 0 ;
-  Widget currentScreen = const HomeViewBody();
-  final PageStorageBucket bucket = PageStorageBucket();
-  List<Widget> screens = [
-    const HomeViewBody(),
-    const SearchView(),
-    const FavoriteView(),
-    const CartViewBody(),
-    const ProfileView(),
-
-  ];
-  changeCurrentScreen(int index){
-    if(index == 0){
-      currentScreen = screens[0];
-      emit(ChangeCurrentScreen());
-    } else if(index == 1){
-      currentScreen = screens[1];
-      emit(ChangeCurrentScreen());
-    }else if(index == 2){
-      currentScreen = screens[2];
-      emit(ChangeCurrentScreen());
-    }else if(index == 3){
-      currentScreen = screens[3];
-      emit(ChangeCurrentScreen());
-    }else if(index == 4){
-      currentScreen = screens[4];
-      emit(ChangeCurrentScreen());
-    }
-  }
-  changeCurrentIndex(int index){
-    currentIndex = index;
-    emit(ChangeCurrentIndex());
-  }
 /* get slider image */
   SliderModel? sliderModel;
   Future<void>  getSliderData() async{

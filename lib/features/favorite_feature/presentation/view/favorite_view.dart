@@ -9,8 +9,9 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FavoriteCubit favoriteCubit =sl<FavoriteCubit>();
     return BlocProvider(
-      create: (BuildContext context) => sl<FavoriteCubit>()..getAllFavorite(),
+      create: (BuildContext context) => favoriteCubit..getAllFavorite(),
       child: BlocConsumer<FavoriteCubit , FavoriteState>(
         listener: (context , state ){
 
@@ -19,15 +20,16 @@ class FavoriteView extends StatelessWidget {
             return Column(
               children: [
                 FavoriteViewBody(
-                  imageBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().imageFavoriteBook : sl<FavoriteCubit>().imageFavoriteBookAfterDelete,
-                  nameBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().nameFavoriteBook : sl<FavoriteCubit>().nameFavoriteBookAfterDelete,
-                  categoryBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ?sl<FavoriteCubit>().categoryFavoriteBook : sl<FavoriteCubit>().categoryFavoriteBookAfterDelete,
-                  priceBeforeBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().priceAfterFavoriteBook : sl<FavoriteCubit>().priceAfterFavoriteBookAfterDelete,
-                  priceAfterBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().priceBeforeFavoriteBook : sl<FavoriteCubit>().priceBeforeFavoriteBookAfterDelete,
-                  discountBook:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().discountFavoriteBook : sl<FavoriteCubit>().discountFavoriteBookAfterDelete,
-                  length:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().lengthFavoriteBooks : sl<FavoriteCubit>().lengthFavoriteBooksAfterDelete,
-                  description:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().description : sl<FavoriteCubit>().descriptionAfterDelete,
-                  bookId:sl<FavoriteCubit>().favoriteModel?.dataBook !=null ? sl<FavoriteCubit>().bookId : sl<FavoriteCubit>().bookIdAfterDelete,
+                  imageBook:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.imageFavoriteBook : favoriteCubit.imageFavoriteBookAfterDelete,
+                  nameBook:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.nameFavoriteBook : favoriteCubit.nameFavoriteBookAfterDelete,
+                  categoryBook:favoriteCubit.favoriteModel?.dataBook !=null ?favoriteCubit.categoryFavoriteBook : favoriteCubit.categoryFavoriteBookAfterDelete,
+                  priceBeforeBook:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.priceAfterFavoriteBook : favoriteCubit.priceAfterFavoriteBookAfterDelete,
+                  priceAfterBook:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.priceBeforeFavoriteBook : favoriteCubit.priceBeforeFavoriteBookAfterDelete,
+                  discountBook:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.discountFavoriteBook : favoriteCubit.discountFavoriteBookAfterDelete,
+                  length:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.lengthFavoriteBooks : favoriteCubit.lengthFavoriteBooksAfterDelete,
+                  description:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.description : favoriteCubit.descriptionAfterDelete,
+                  bookId:favoriteCubit.favoriteModel?.dataBook !=null ? favoriteCubit.bookId : favoriteCubit.bookIdAfterDelete,
+                  favoriteCubit: favoriteCubit,
                 )
               ],
             );

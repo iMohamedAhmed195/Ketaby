@@ -26,9 +26,10 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         validator: function,
         decoration: InputDecoration(
-            label: Text(
-              hintText,
-              style: const TextStyle(color: Styles.kPrimaryColor),
+
+            hintText: hintText,
+            hintStyle: TextStyle(
+              color: Colors.black
             ),
             enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey)),

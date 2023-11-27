@@ -14,6 +14,7 @@ import 'package:ketab/features/favorite_feature/presentation/view_model/favorite
 import 'package:ketab/features/home_feature/data/repos/home_repo.dart';
 import 'package:ketab/features/home_feature/data/repos/home_repo_impl.dart';
 import 'package:ketab/features/home_feature/presentation/view_model/home_cubit.dart';
+import 'package:ketab/features/layout_feature/presentation/view_model/layout_cubit.dart';
 import 'package:ketab/features/login_feature/data/repo/login_repo.dart';
 import 'package:ketab/features/login_feature/data/repo/login_repo_impl.dart';
 import 'package:ketab/features/login_feature/presentation/view_model/login_cubit.dart';
@@ -38,18 +39,22 @@ class ServiceLocator {
     sl.registerLazySingleton(() => LoginCubit(sl()));
     sl.registerLazySingleton<RegisterRepo>(() => RegisterRepoImpl());
     sl.registerLazySingleton(() => RegisterCubit(sl()));
+    /// LAYOUT
+    sl.registerLazySingleton(() => LayoutCubit());
+    ///
     sl.registerLazySingleton<HomeRepo>(() => HomeRepoImpl());
-    sl.registerLazySingleton(() => HomeCubit(sl()));
+    sl.registerFactory(() => HomeCubit(sl()));
+
     sl.registerLazySingleton<SearchRepo>(() => SearchRepoImpl());
-    sl.registerLazySingleton(() => SearchCubit(sl()));
+    sl.registerFactory(() => SearchCubit(sl()));
     sl.registerLazySingleton<MakeAnDRemoveFavoriteRepo>(() => MakeAndRemoveFavoriteRepoImpl());
-    sl.registerLazySingleton(() => DetailsCubit(sl()));
+    sl.registerFactory(() => DetailsCubit(sl()));
     sl.registerLazySingleton<FavoriteRepo>(() => FavoriteRepoImpl());
-    sl.registerLazySingleton(() => FavoriteCubit(sl()));
+    sl.registerFactory(() => FavoriteCubit(sl()));
     sl.registerLazySingleton<CartRepo>(() => CartRepoImpl());
-    sl.registerLazySingleton(() => CartCubit(sl()));
+    sl.registerFactory(() => CartCubit(sl()));
     sl.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl());
-    sl.registerLazySingleton(() => ProfileCubit(sl()));
+    sl.registerFactory(() => ProfileCubit(sl()));
 
 
 

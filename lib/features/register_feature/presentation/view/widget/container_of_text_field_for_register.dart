@@ -6,7 +6,7 @@ import 'package:ketab/core/utils/constants/colors.dart';
 import 'package:ketab/core/utils/constants/strings.dart';
 import 'package:ketab/core/widget/custom_button.dart';
 import 'package:ketab/core/widget/custom_text_form_field.dart';
-import 'package:ketab/features/home_feature/presentation/view/home_view.dart';
+import 'package:ketab/features/layout_feature/presentation/view/layout_view.dart';
 import 'package:ketab/features/register_feature/presentation/view_model/register_cubit.dart';
 
 class ContainerOfTextFieldForRegister extends StatelessWidget {
@@ -25,7 +25,7 @@ class ContainerOfTextFieldForRegister extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => HomeView(
+                    builder: (context) => LayoutView(
                       imageProfile: state.registerModel.data!.user!.image!,
                       nameProfile: state.registerModel.data!.user!.name!,
                       emailProfile:state.registerModel.data!.user!.email!,

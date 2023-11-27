@@ -14,46 +14,49 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: BlocConsumer<HomeCubit, HomeState>(
-        listener: (context, state) {
-        },
-        builder: (context, state) {
-          return Column(
-            children: [
-              CarouselImageHome(
-                image: sl<HomeCubit>().images,
-                index: sl<HomeCubit>().index,
-              ),
-              BestSellerListView(
-                imageBook: sl<HomeCubit>().imageBook,
-                nameBook: sl<HomeCubit>().nameBook,
-                categoryBook: sl<HomeCubit>().categoryBook,
-                priceBeforeBook: sl<HomeCubit>().priceBeforeBook,
-                priceAfterBook: sl<HomeCubit>().priceAfterBook,
-                discountBook: sl<HomeCubit>().discountBook,
-                length: sl<HomeCubit>().lengthBestSeller,
-                description: sl<HomeCubit>().description,
-                bookId:sl<HomeCubit>().bookId,
-              ),
-              CategorySection(
-                nameCategory: sl<HomeCubit>().categories,
-                lengthCategory: sl<HomeCubit>().lengthCategory,
-              ),
-              NewArrivalListView(
-                imageBook: sl<HomeCubit>().imageBookNewArrival,
-                nameBook: sl<HomeCubit>().nameBookNewArrival,
-                categoryBook: sl<HomeCubit>().categoryBookNewArrival,
-                priceBeforeBook: sl<HomeCubit>().priceBeforeBookNewArrival,
-                priceAfterBook: sl<HomeCubit>().priceAfterBookNewArrival,
-                discountBook: sl<HomeCubit>().discountBookNewArrival,
-                length: sl<HomeCubit>().lengthNewArrival,
-                description: sl<HomeCubit>().description,
-                bookId: sl<HomeCubit>().bookIdArrival,
-              )
-            ],
-          );
-        },
+    HomeCubit  homeCubit = sl<HomeCubit>();
+    return BlocProvider(
+      create: (context) => homeCubit..getSliderData()..getNewArrivalData()..getBestSellerData()..getCategoryData(),
+      child: SingleChildScrollView(
+        child: BlocConsumer<HomeCubit, HomeState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return Column(
+              children: [
+                CarouselImageHome(
+                  image: homeCubit.images,
+                  index: homeCubit.index,
+                ),
+                BestSellerListView(
+                  imageBook: homeCubit.imageBook,
+                  nameBook: homeCubit.nameBook,
+                  categoryBook: homeCubit.categoryBook,
+                  priceBeforeBook: homeCubit.priceBeforeBook,
+                  priceAfterBook: homeCubit.priceAfterBook,
+                  discountBook: homeCubit.discountBook,
+                  length: homeCubit.lengthBestSeller,
+                  description: homeCubit.description,
+                  bookId: homeCubit.bookId,
+                ),
+                CategorySection(
+                  nameCategory: homeCubit.categories,
+                  lengthCategory: homeCubit.lengthCategory,
+                ),
+                NewArrivalListView(
+                  imageBook: homeCubit.imageBookNewArrival,
+                  nameBook: homeCubit.nameBookNewArrival,
+                  categoryBook: homeCubit.categoryBookNewArrival,
+                  priceBeforeBook: homeCubit.priceBeforeBookNewArrival,
+                  priceAfterBook: homeCubit.priceAfterBookNewArrival,
+                  discountBook: homeCubit.discountBookNewArrival,
+                  length: homeCubit.lengthNewArrival,
+                  description: homeCubit.description,
+                  bookId: homeCubit.bookIdArrival,
+                )
+              ],
+            );
+          },
+        ),
       ),
     );
   }

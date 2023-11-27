@@ -22,5 +22,26 @@ class ProfileRepoImpl extends ProfileRepo{
           return left(ServerFailure(error.toString()));
         }
   }
+
+
+  @override
+  Future<Either<ServerFailure, ProfileModel>> editDataProfile(
+      {String? name, String? phone, String? city, String? address}) async{
+    try{
+      var result = await sl<DioHelper>().postData(url: ApiConstants.updateProfile ,data:{
+        'name' : name,
+         'phone' : phone,
+        'city' : city,
+        'address' : address
+      } ,  token: Strings.token);
+      profileModel =ProfileModel.fromJson(result.data) ;
+      return right(profileModel!);
+    }catch(error){
+      log('there is an error when you get data in home');
+      return left(ServerFailure(error.toString()));
+    }
+  }
+
+
   
 }

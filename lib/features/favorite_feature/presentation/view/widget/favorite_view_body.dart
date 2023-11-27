@@ -20,7 +20,9 @@ class FavoriteViewBody extends StatelessWidget {
       required this.discountBook,
       required this.length,
       required this.description,
-      required this.bookId});
+      required this.bookId,
+      required this.favoriteCubit
+      });
   final List<String> imageBook;
   final List<int> bookId;
   final List<String> nameBook;
@@ -30,6 +32,7 @@ class FavoriteViewBody extends StatelessWidget {
   final List<String> description;
   final List<num> discountBook;
   final int length;
+  final FavoriteCubit favoriteCubit;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FavoriteCubit, FavoriteState>(
@@ -199,7 +202,7 @@ class FavoriteViewBody extends StatelessWidget {
                                           children: [
                                             IconButton(
                                                 onPressed: () {
-                                                  sl<FavoriteCubit>()
+                                                  favoriteCubit
                                                       .removeFavorite(
                                                           index: index);
                                                 },

@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ketab/features/profile_feature/data/profile_model/profile_model.dart';
 import 'package:ketab/features/profile_feature/data/repo/profile_repo.dart';
@@ -8,11 +9,14 @@ part 'profile_state.dart';
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this.profileRepo) : super(ProfileInitial());
 
-  static ProfileCubit get(context) => BlocProvider.of(context);
-
-
   final ProfileRepo profileRepo;
 
+  var nameController = TextEditingController() ;
+  var phoneController = TextEditingController() ;
+  var cityController = TextEditingController() ;
+  var addressController = TextEditingController() ;
+
+  var formKey = GlobalKey<FormState>() ;
 
   /*get data for profile*/
   ProfileModel? profileModel;
@@ -34,6 +38,22 @@ class ProfileCubit extends Cubit<ProfileState> {
               this.profileModel=profileModel;
               putDataInVar();
               emit(GetProfileSuccess(profileModel));
+            }
+    );
+  }
+
+  Future<void> editDataProfile()async{
+    emit(EditProfileLoading());
+    var result = await profileRepo.editDataProfile(name : nameController.text  , phone : phoneController.text, city : cityController.text, address : addressController.text);
+
+    result.fold(
+            (failure) {
+              emit(EditProfileError());
+            },
+            (profileModel) {
+              this.profileModel=profileModel;
+              putDataInVar();
+              emit(EditProfileSuccess(profileModel));
             }
     );
   }

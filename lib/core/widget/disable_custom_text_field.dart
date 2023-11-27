@@ -15,7 +15,9 @@ class DisablesCustomTextField extends StatelessWidget {
         autofocus : true ,
         decoration: InputDecoration(
             hintText:dataText ,
-
+            hintStyle: TextStyle(
+              color: Colors.black
+            ),
             enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey)),
             focusedBorder: const OutlineInputBorder(
